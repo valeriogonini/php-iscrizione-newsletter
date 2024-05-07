@@ -1,7 +1,8 @@
 <?php
-function checkEmail()
+$user_email = $_POST['email'];
+
+function checkEmail($email)
 {
-    $email = $_POST['email'];
     var_dump($email);
     if (str_contains($email, '@') && str_contains($email, '.')) {
         var_dump("l'email $email è valida");
@@ -32,23 +33,11 @@ function checkEmail()
 
     </form>
     <div>
-        <?php if (checkEmail() === true) {
-        ?>
-            <div>
-
-                l'email è valida
-            </div>
-
-        <?php
-        } else {
-        ?>
-            <div>
-                l'email non è valida
-            </div>
-
-        <?php
-        }
-        ?>
+        <?php if (checkEmail($user_email) === true) { ?>
+            <div>l'email <?php echo $user_email; ?> è valida</div>
+        <?php } else { ?>
+            <div>l'email <?php echo $user_email; ?> non è valida</div>
+        <?php } ?>
     </div>
 </body>
 
